@@ -1,5 +1,5 @@
 const datastore = [
-    {id: 0, artist: "Mike", song: "loving", time: "5", rating:"5", genre:"Pop", album:"Mend",},
+    {id: 0, artist: "Mike", song: "loving", time: "5", rating:"5", genre:"Pop", album:"4rever",},
     {id: 1, artist: "John", song: "like", time: "2", rating:"4", genre:"Rock", album:"Great"},
     {id: 2, artist: "DOE", song: "ride", time: "9", rating:"3", genre:"Rock", album:"Zend"},
     {id: 3, artist: "Tim", song: "side", time: "15", rating:"1", genre:"Blues", album:"Mend"},
@@ -12,11 +12,6 @@ const datastore = [
     {id: 10, artist: "mike", song: "ride", time: "9", rating:"3", genre:"Rock", album:"zend"},
     {id: 11, artist: "mike", song: "side", time: "15", rating:"1", genre:"Blues", album:"Mend"}
 ]
-
-const albumImage = [{albumName : "Tupac", imgLocation: "images/2pac.jpg"},
-    {albumName : "Zend", imgLocation: "images/bob-marley.jpg"},
-    {albumName : "Great", imgLocation: "images/whitney.jpg"}]
-
 let currentData = [];
 
 // Pops an alert window to show the page has loaded.
@@ -37,16 +32,12 @@ let dataTable = document.querySelector("#table");
 const searchButton = document.getElementsByClassName("btn-group")[0].children[0];
 const resetButton = document.getElementsByClassName("btn-group")[0].children[1];
 
-// access to favourites div
-const favouritesDiv = document.getElementById("favourites")
-
-let downloadButton = document.getElementById("download");
 
 // Helper function 1- Get Selection from Select.
 function getSelectedGenre(){
-        let selectedGenre;
-        selectedGenre = selection.options[selection.selectedIndex].value;
-        return selectedGenre;
+    let selectedGenre;
+    selectedGenre = selection.options[selection.selectedIndex].value;
+    return selectedGenre;
 }
 
 // Helper function 2- Detect enter key.
@@ -55,11 +46,6 @@ function detectEnter(event) {
     if (event.keyCode === 13) {
         searchButton.click();
     }
-}
-
-function addFavouriteImage() {
-    let parent = this.parentNode;
-    alert(parent.nextSibling);
 }
 
 // Main function 1
@@ -164,12 +150,12 @@ function search() {
                 //     row.appendChild(cell);
                 // })
 
-                const favouriteButtonCell = document.createElement('td');
-                const favouriteButton = document.createElement('button');
+                let favouriteButtonCell = document.createElement('td');
+                let favouriteButton = document.createElement('button');
                 favouriteButton.setAttribute("type", "button");
                 favouriteButton.setAttribute("class", "btn btn-secondary");
                 favouriteButton.setAttribute("id", "favourite");
-                const favouriteBtnText = document.createTextNode("favourite");
+                let favouriteBtnText = document.createTextNode("favourite");
                 favouriteButton.appendChild(favouriteBtnText);
                 favouriteButtonCell.appendChild(favouriteButton);
                 row.appendChild(favouriteButtonCell);
@@ -198,7 +184,7 @@ function search() {
 
     }
 
-    }
+}
 
 
 // Main function 2
@@ -213,27 +199,5 @@ function reset(){
 resetButton.addEventListener("click", reset);
 searchButton.addEventListener("click", search);
 inputElementsArray.forEach(input => input.addEventListener("keyup", detectEnter));
-
-
-// Event Delegations
-document.addEventListener('click',function(event){
-        if(event.target && event.target.id === 'favourite'){
-            let favouriteButton = document.getElementById("favourite");
-            let albumName = favouriteButton.parentNode.previousSibling.textContent;
-            albumImage.forEach(album => {
-                if(album.albumName === albumName){
-                    let albumImageSrc = album.imgLocation;
-                    let imgDiv = document.createElement("div");
-                    imgDiv.setAttribute("class", "col-xs-6 col-sm-4 col-md-2 col-lg-2");
-                    let img = document.createElement("img");
-                    img.setAttribute("class", "img-fluid img-thumbnail");
-                    img.setAttribute("src", albumImageSrc);
-                    img.setAttribute("height", "400");
-                    imgDiv.appendChild(img);
-                    favouritesDiv.appendChild(imgDiv);
-                }
-            } )
-        }
-});
 
 window.addEventListener("load", checkWindow);
