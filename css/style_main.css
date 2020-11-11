@@ -1,0 +1,41 @@
+.thead-light{
+  background-color: lightblue;
+}
+
+.btn-secondary{
+  background-color: lightblue;
+  width: 120px;
+  height: 30px;
+}
+
+img{
+  width: 300px;
+  height: 400px;
+}
+
+.btn-group button {
+    background-color: cadetblue; /* Cadetblue background */
+    border: 2px solid cadetblue; /* Cadetblue border */
+    color: white; /* White text */
+    padding: 10px 20px; /* Some padding */
+    cursor: pointer; /* Pointer/hand icon */
+    float: left; /* Float the buttons side by side */
+}
+
+table {
+    font-family: arial, sans-serif;
+    border-collapse: collapse;
+    width: 100%;
+    margin: auto;
+
+}
+
+td, th {
+    border: 1px solid #dddddd;
+    text-align: left;
+    padding: 8px;
+}
+
+tr:nth-child(even) {
+    background-color: #dddddd;
+}
